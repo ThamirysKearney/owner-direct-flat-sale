@@ -21,9 +21,19 @@ describe("photos", () => {
     }
   });
 
-  it("shows the ten photos the owner supplied", () => {
+  it("shows the fifteen photos the owner supplied", () => {
     const filled = GALLERY.filter((slot) => slot.src).length;
-    expect(filled + 2).toBe(10);
+    expect(filled + 2).toBe(15);
+  });
+
+  it("uses the larger dining-room photo as the apartment feature", () => {
+    expect(FEATURE_PHOTOS.apartment.src).toContain("dining-room");
+    const srcs = [
+      FEATURE_PHOTOS.apartment.src,
+      FEATURE_PHOTOS.resort.src,
+      ...GALLERY.map((s) => s.src),
+    ];
+    expect(srcs.some((src) => src?.includes("living-dining"))).toBe(false);
   });
 
   it("shows each photo only once", () => {

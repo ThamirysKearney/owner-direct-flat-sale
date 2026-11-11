@@ -1,15 +1,20 @@
 // All listing content lives here so the page stays in sync with the owner's description.
 
+import diningRoom from "@/assets/dining-room.jpg.asset.json";
 import entranceHall from "@/assets/entrance-hall.jpg.asset.json";
 import enSuiteBathroom from "@/assets/en-suite-bathroom.jpg.asset.json";
 import enSuiteWashbasin from "@/assets/en-suite-washbasin.jpg.asset.json";
+import gardenViews from "@/assets/garden-views.jpg.asset.json";
+import gym from "@/assets/gym.jpg.asset.json";
 import kitchen from "@/assets/kitchen.jpg.asset.json";
-import livingDining from "@/assets/living-dining.jpg.asset.json";
+import livingRoom from "@/assets/living-room.jpg.asset.json";
 import masterBedroom from "@/assets/master-bedroom.jpg.asset.json";
+import pitchPutt from "@/assets/pitch-putt.jpg.asset.json";
 import poolMountain from "@/assets/pool-mountain.jpg.asset.json";
 import poolsGardens from "@/assets/pools-gardens.jpg.asset.json";
 import secondBathroom from "@/assets/second-bathroom.jpg.asset.json";
 import secondBedroom from "@/assets/second-bedroom.jpg.asset.json";
+import terraceView from "@/assets/terrace-view.jpg.asset.json";
 
 export const LISTING = {
   title: "Exclusive two-bedroom apartment in Arenal Golf",
@@ -118,9 +123,9 @@ export type PhotoSlot = { id: string; label: string; size: string; src?: string 
 export const FEATURE_PHOTOS: Record<"apartment" | "resort", PhotoSlot> = {
   apartment: {
     id: "feature-apartment",
-    label: "Living & dining area",
-    size: "1600 × 1200 px",
-    src: livingDining.url,
+    label: "Dining & living room",
+    size: "1200 × 1500 px",
+    src: diningRoom.url,
   },
   resort: {
     id: "feature-resort",
@@ -131,8 +136,8 @@ export const FEATURE_PHOTOS: Record<"apartment" | "resort", PhotoSlot> = {
 };
 
 export const GALLERY: PhotoSlot[] = [
-  { id: "g1", label: "Terrace with golf views", size: "1600 × 1200 px" },
-  { id: "g2", label: "Living room", size: "1600 × 1200 px" },
+  { id: "g1", label: "Terrace with golf views", size: "1600 × 1200 px", src: terraceView.url },
+  { id: "g2", label: "Living room", size: "1600 × 1200 px", src: livingRoom.url },
   { id: "g3", label: "Dining area", size: "1600 × 1200 px" },
   { id: "g4", label: "Kitchen", size: "1600 × 1200 px", src: kitchen.url },
   { id: "g14", label: "Entrance hall & corridor", size: "1600 × 1200 px", src: entranceHall.url },
@@ -157,8 +162,8 @@ export const GALLERY: PhotoSlot[] = [
     size: "1600 × 1200 px",
     src: poolsGardens.url,
   },
-  { id: "g10", label: "Pitch & Putt course", size: "1600 × 1200 px" },
-  { id: "g11", label: "Clubhouse & gym", size: "1600 × 1200 px" },
-  { id: "g12", label: "Gardens & views", size: "1600 × 1200 px" },
+  { id: "g10", label: "Pitch & Putt course", size: "1600 × 1200 px", src: pitchPutt.url },
+  { id: "g11", label: "Clubhouse & gym", size: "1600 × 1200 px", src: gym.url },
+  { id: "g12", label: "Gardens & views", size: "1600 × 1200 px", src: gardenViews.url },
   { id: "g13", label: "Building & entrance", size: "1600 × 1200 px" },
 ];
