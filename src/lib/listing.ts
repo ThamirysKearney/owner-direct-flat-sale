@@ -6,10 +6,10 @@ import enSuiteWashbasin from "@/assets/en-suite-washbasin.jpg.asset.json";
 import kitchen from "@/assets/kitchen.jpg.asset.json";
 import livingDining from "@/assets/living-dining.jpg.asset.json";
 import masterBedroom from "@/assets/master-bedroom.jpg.asset.json";
+import poolMountain from "@/assets/pool-mountain.jpg.asset.json";
 import poolsGardens from "@/assets/pools-gardens.jpg.asset.json";
 import secondBathroom from "@/assets/second-bathroom.jpg.asset.json";
 import secondBedroom from "@/assets/second-bedroom.jpg.asset.json";
-import swimmingPools from "@/assets/swimming-pools.jpg.asset.json";
 
 export const LISTING = {
   title: "Exclusive two-bedroom apartment in Arenal Golf",
@@ -124,9 +124,9 @@ export const FEATURE_PHOTOS: Record<"apartment" | "resort", PhotoSlot> = {
   },
   resort: {
     id: "feature-resort",
-    label: "Pools & gardens",
+    label: "Swimming pool with mountain views",
     size: "1200 × 1500 px",
-    src: poolsGardens.url,
+    src: poolMountain.url,
   },
 };
 
@@ -151,7 +151,12 @@ export const GALLERY: PhotoSlot[] = [
   },
   { id: "g7", label: "Second bedroom", size: "1600 × 1200 px", src: secondBedroom.url },
   { id: "g8", label: "Second bathroom", size: "1600 × 1200 px", src: secondBathroom.url },
-  { id: "g9", label: "Swimming pools", size: "1600 × 1200 px", src: swimmingPools.url },
+  {
+    id: "g9",
+    label: "Pools and gardens from above",
+    size: "1600 × 1200 px",
+    src: poolsGardens.url,
+  },
   { id: "g10", label: "Pitch & Putt course", size: "1600 × 1200 px" },
   { id: "g11", label: "Clubhouse & gym", size: "1600 × 1200 px" },
   { id: "g12", label: "Gardens & views", size: "1600 × 1200 px" },
