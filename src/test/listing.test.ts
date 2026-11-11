@@ -21,9 +21,9 @@ describe("photos", () => {
     }
   });
 
-  it("shows the sixteen photos the owner supplied", () => {
+  it("shows the fourteen photos the owner supplied", () => {
     const filled = GALLERY.filter((slot) => slot.src).length;
-    expect(filled + 2).toBe(16);
+    expect(filled + 2).toBe(14);
   });
 
   it("uses the larger dining-room photo as the apartment feature", () => {
