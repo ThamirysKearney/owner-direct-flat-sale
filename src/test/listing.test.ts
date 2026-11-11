@@ -25,4 +25,19 @@ describe("photos", () => {
     const filled = GALLERY.filter((slot) => slot.src).length;
     expect(filled + 2).toBe(10);
   });
+
+  it("shows each photo only once", () => {
+    const srcs = [
+      FEATURE_PHOTOS.apartment.src,
+      FEATURE_PHOTOS.resort.src,
+      ...GALLERY.map((slot) => slot.src),
+    ].filter(Boolean);
+    expect(new Set(srcs).size).toBe(srcs.length);
+  });
+
+  it("drops the low-resolution pool photo in favour of the larger one", () => {
+    const srcs = [FEATURE_PHOTOS.apartment.src, FEATURE_PHOTOS.resort.src, ...GALLERY.map((s) => s.src)];
+    expect(srcs.some((src) => src?.includes("swimming-pools"))).toBe(false);
+    expect(FEATURE_PHOTOS.resort.src).toContain("pool-mountain");
+  });
 });
