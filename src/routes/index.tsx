@@ -106,7 +106,7 @@ function Index() {
 
 function Header() {
   return (
-    <header className="absolute inset-x-0 top-0 z-30">
+    <header className="bg-ink relative z-30 md:absolute md:inset-x-0 md:top-0 md:bg-transparent">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
         <a href="#top" className="font-display text-2xl text-ink-foreground">
           Arenal Golf <span className="text-ink-muted">·</span>{" "}
@@ -133,21 +133,24 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative flex min-h-[92vh] items-end overflow-hidden bg-ink">
+    <section
+      id="top"
+      className="relative overflow-hidden bg-ink md:flex md:min-h-[92vh] md:items-end"
+    >
       <img
         src={bannerAsset.url}
         alt="Arenal Golf course in Benalmádena: putting green with the club flag, palm trees and the residential building"
         width={1376}
         height={768}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="block w-full md:absolute md:inset-0 md:h-full md:w-full md:object-cover"
       />
-      <div className="absolute inset-0 bg-hero-overlay" />
-      <div className="relative mx-auto w-full max-w-7xl px-6 pb-16 pt-40 md:pb-24">
-        <p className="eyebrow animate-rise text-ink-muted">
+      <div className="bg-hero-overlay hidden md:absolute md:inset-0 md:block" />
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-12 md:pb-24 md:pt-40">
+        <p className="eyebrow animate-rise inline-block rounded-full bg-ink/60 px-4 py-2 text-ink-foreground ring-1 ring-ink-foreground/15">
           For sale directly by the owner · No agency fees
         </p>
-        <h1 className="animate-rise mt-5 max-w-4xl text-5xl leading-[1.02] text-ink-foreground [animation-delay:120ms] md:text-7xl lg:text-8xl">
-          A two-bedroom home in <span className="italic">Arenal Golf</span>
+        <h1 className="sr-only">
+          Two-bedroom apartment for sale in Arenal Golf, Benalmádena — {price}
         </h1>
         <p className="animate-rise mt-6 max-w-xl text-lg text-ink-foreground/85 [animation-delay:240ms]">
           A privileged lifestyle surrounded by golf, nature and exceptional amenities —{" "}
