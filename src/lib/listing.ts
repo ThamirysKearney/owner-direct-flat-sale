@@ -1,15 +1,19 @@
 // All listing content lives here so the page stays in sync with the owner's description.
 
+import diningArea from "@/assets/dining-area.jpg.asset.json";
 import diningRoom from "@/assets/dining-room.jpg.asset.json";
 import entranceHall from "@/assets/entrance-hall.jpg.asset.json";
 import enSuiteBathroom from "@/assets/en-suite-bathroom.jpg.asset.json";
 import enSuiteWashbasin from "@/assets/en-suite-washbasin.jpg.asset.json";
+import floorPlan from "@/assets/floor-plan.jpg.asset.json";
+import frontOfBuilding from "@/assets/front-of-building.jpg.asset.json";
 import gardenViews from "@/assets/garden-views.jpg.asset.json";
 import gym from "@/assets/gym.jpg.asset.json";
 import kitchen from "@/assets/kitchen.jpg.asset.json";
 import livingRoom from "@/assets/living-room.jpg.asset.json";
 import masterBedroom from "@/assets/master-bedroom.jpg.asset.json";
 import pitchPutt from "@/assets/pitch-putt.jpg.asset.json";
+import playground from "@/assets/playground.jpg.asset.json";
 import poolMountain from "@/assets/pool-mountain.jpg.asset.json";
 import poolsGardens from "@/assets/pools-gardens.jpg.asset.json";
 import secondBathroom from "@/assets/second-bathroom.jpg.asset.json";
@@ -138,7 +142,7 @@ export const FEATURE_PHOTOS: Record<"apartment" | "resort", PhotoSlot> = {
 export const GALLERY: PhotoSlot[] = [
   { id: "g1", label: "Terrace with golf views", size: "1600 × 1200 px", src: terraceView.url },
   { id: "g2", label: "Living room", size: "1600 × 1200 px", src: livingRoom.url },
-  { id: "g3", label: "Dining area", size: "1600 × 1200 px" },
+  { id: "g3", label: "Dining area", size: "1600 × 1200 px", src: diningArea.url },
   { id: "g4", label: "Kitchen", size: "1600 × 1200 px", src: kitchen.url },
   { id: "g14", label: "Entrance hall & corridor", size: "1600 × 1200 px", src: entranceHall.url },
   { id: "g5", label: "Master bedroom", size: "1600 × 1200 px", src: masterBedroom.url },
@@ -165,5 +169,14 @@ export const GALLERY: PhotoSlot[] = [
   { id: "g10", label: "Pitch & Putt course", size: "1600 × 1200 px", src: pitchPutt.url },
   { id: "g11", label: "Clubhouse & gym", size: "1600 × 1200 px", src: gym.url },
   { id: "g12", label: "Gardens & views", size: "1600 × 1200 px", src: gardenViews.url },
-  { id: "g13", label: "Building & entrance", size: "1600 × 1200 px" },
+  { id: "g13", label: "Building & entrance", size: "1600 × 1200 px", src: frontOfBuilding.url },
+  { id: "g16", label: "Children's play area", size: "1600 × 1200 px", src: playground.url },
 ];
+
+/** Room-by-room plan of the apartment, shown in its own section after the photos. */
+export const FLOOR_PLAN: PhotoSlot = {
+  id: "floor-plan",
+  label: "Floor plan",
+  size: "839 × 454 px",
+  src: floorPlan.url,
+};
