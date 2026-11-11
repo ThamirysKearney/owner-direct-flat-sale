@@ -133,17 +133,20 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative flex min-h-[92vh] items-end overflow-hidden bg-ink">
+    <section
+      id="top"
+      className="relative overflow-hidden bg-ink md:flex md:min-h-[92vh] md:items-end"
+    >
       <img
         src={bannerAsset.url}
         alt="Arenal Golf course in Benalmádena: putting green with the club flag, palm trees and the residential building"
         width={1376}
         height={768}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="block w-full md:absolute md:inset-0 md:h-full md:w-full md:object-cover"
       />
-      <div className="absolute inset-0 bg-hero-overlay" />
-      <div className="relative mx-auto w-full max-w-7xl px-6 pb-16 pt-40 md:pb-24">
-        <p className="eyebrow animate-rise text-ink-muted">
+      <div className="bg-hero-overlay hidden md:absolute md:inset-0 md:block" />
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-12 md:pb-24 md:pt-40">
+        <p className="eyebrow animate-rise text-ink-foreground/90">
           For sale directly by the owner · No agency fees
         </p>
         <h1 className="sr-only">
