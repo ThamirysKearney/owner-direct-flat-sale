@@ -22,7 +22,7 @@ import {
   Waves,
 } from "lucide-react";
 
-import heroImage from "@/assets/hero-arenal-golf.jpg";
+import bannerAsset from "@/assets/arenal-golf-banner.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { PhotoFrame } from "@/components/listing/PhotoFrame";
@@ -135,10 +135,10 @@ function Hero() {
   return (
     <section id="top" className="relative flex min-h-[92vh] items-end overflow-hidden bg-ink">
       <img
-        src={heroImage}
-        alt="View over the Arenal Golf residential complex towards the mountains and the sea"
-        width={1920}
-        height={1088}
+        src={bannerAsset.url}
+        alt="Arenal Golf course in Benalmádena: putting green with the club flag, palm trees and the residential building"
+        width={1376}
+        height={768}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-hero-overlay" />
