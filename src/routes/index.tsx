@@ -146,8 +146,8 @@ function Hero() {
         <p className="eyebrow animate-rise text-ink-muted">
           For sale directly by the owner · No agency fees
         </p>
-        <h1 className="animate-rise mt-5 max-w-4xl text-5xl leading-[1.02] text-ink-foreground [animation-delay:120ms] md:text-7xl lg:text-8xl">
-          A two-bedroom home in <span className="italic">Arenal Golf</span>
+        <h1 className="sr-only">
+          Two-bedroom apartment for sale in Arenal Golf, Benalmádena — {price}
         </h1>
         <p className="animate-rise mt-6 max-w-xl text-lg text-ink-foreground/85 [animation-delay:240ms]">
           A privileged lifestyle surrounded by golf, nature and exceptional amenities —{" "}
