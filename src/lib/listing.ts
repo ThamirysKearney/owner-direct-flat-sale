@@ -1,5 +1,16 @@
 // All listing content lives here so the page stays in sync with the owner's description.
 
+import entranceHall from "@/assets/entrance-hall.jpg.asset.json";
+import enSuiteBathroom from "@/assets/en-suite-bathroom.jpg.asset.json";
+import enSuiteWashbasin from "@/assets/en-suite-washbasin.jpg.asset.json";
+import kitchen from "@/assets/kitchen.jpg.asset.json";
+import livingDining from "@/assets/living-dining.jpg.asset.json";
+import masterBedroom from "@/assets/master-bedroom.jpg.asset.json";
+import poolsGardens from "@/assets/pools-gardens.jpg.asset.json";
+import secondBathroom from "@/assets/second-bathroom.jpg.asset.json";
+import secondBedroom from "@/assets/second-bedroom.jpg.asset.json";
+import swimmingPools from "@/assets/swimming-pools.jpg.asset.json";
+
 export const LISTING = {
   title: "Exclusive two-bedroom apartment in Arenal Golf",
   location: "Arroyo de la Miel, Benalmádena · Costa del Sol",
@@ -99,25 +110,48 @@ export const DIRECT_SALE = [
 
 /**
  * Photo slots. Each slot shows a labelled placeholder until `src` is set.
- * Recommended sizes: gallery 1600×1200 (4:3 landscape), feature 1200×1500 (4:5 portrait).
+ * Recommended sizes: gallery 1600×1200 (4:3 landscape), feature portrait 1200×1500 (4:5),
+ * feature landscape 1600×1200 (4:3).
  */
 export type PhotoSlot = { id: string; label: string; size: string; src?: string };
 
 export const FEATURE_PHOTOS: Record<"apartment" | "resort", PhotoSlot> = {
-  apartment: { id: "feature-apartment", label: "Living & dining area", size: "1200 × 1500 px" },
-  resort: { id: "feature-resort", label: "Communal pool", size: "1200 × 1500 px" },
+  apartment: {
+    id: "feature-apartment",
+    label: "Living & dining area",
+    size: "1600 × 1200 px",
+    src: livingDining.url,
+  },
+  resort: {
+    id: "feature-resort",
+    label: "Pools & gardens",
+    size: "1200 × 1500 px",
+    src: poolsGardens.url,
+  },
 };
 
 export const GALLERY: PhotoSlot[] = [
   { id: "g1", label: "Terrace with golf views", size: "1600 × 1200 px" },
   { id: "g2", label: "Living room", size: "1600 × 1200 px" },
   { id: "g3", label: "Dining area", size: "1600 × 1200 px" },
-  { id: "g4", label: "Kitchen", size: "1600 × 1200 px" },
-  { id: "g5", label: "Master bedroom", size: "1600 × 1200 px" },
-  { id: "g6", label: "En-suite bathroom", size: "1600 × 1200 px" },
-  { id: "g7", label: "Second bedroom", size: "1600 × 1200 px" },
-  { id: "g8", label: "Second bathroom", size: "1600 × 1200 px" },
-  { id: "g9", label: "Swimming pools", size: "1600 × 1200 px" },
+  { id: "g4", label: "Kitchen", size: "1600 × 1200 px", src: kitchen.url },
+  { id: "g14", label: "Entrance hall & corridor", size: "1600 × 1200 px", src: entranceHall.url },
+  { id: "g5", label: "Master bedroom", size: "1600 × 1200 px", src: masterBedroom.url },
+  {
+    id: "g6",
+    label: "En-suite bathroom",
+    size: "1600 × 1200 px",
+    src: enSuiteBathroom.url,
+  },
+  {
+    id: "g15",
+    label: "En-suite washbasin & bidet",
+    size: "1600 × 1200 px",
+    src: enSuiteWashbasin.url,
+  },
+  { id: "g7", label: "Second bedroom", size: "1600 × 1200 px", src: secondBedroom.url },
+  { id: "g8", label: "Second bathroom", size: "1600 × 1200 px", src: secondBathroom.url },
+  { id: "g9", label: "Swimming pools", size: "1600 × 1200 px", src: swimmingPools.url },
   { id: "g10", label: "Pitch & Putt course", size: "1600 × 1200 px" },
   { id: "g11", label: "Clubhouse & gym", size: "1600 × 1200 px" },
   { id: "g12", label: "Gardens & views", size: "1600 × 1200 px" },
