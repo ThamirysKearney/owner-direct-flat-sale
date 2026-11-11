@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- All listing copy, facts and photo slots live in `src/lib/listing.ts`; the page only renders it — keeps content edits in one place.
+- Photos use `PhotoFrame`, which shows a labelled size placeholder until a slot gets a `src` — owner uploads photos later.
