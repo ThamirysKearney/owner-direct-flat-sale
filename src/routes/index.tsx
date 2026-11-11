@@ -146,7 +146,7 @@ function Hero() {
       />
       <div className="bg-hero-overlay hidden md:absolute md:inset-0 md:block" />
       <div className="relative mx-auto w-full max-w-7xl px-6 py-12 md:pb-24 md:pt-40">
-        <p className="eyebrow animate-rise text-ink-foreground/90">
+        <p className="eyebrow animate-rise inline-block rounded-full bg-ink/60 px-4 py-2 text-ink-foreground ring-1 ring-ink-foreground/15">
           For sale directly by the owner · No agency fees
         </p>
         <h1 className="sr-only">
