@@ -106,7 +106,7 @@ function Index() {
 
 function Header() {
   return (
-    <header className="absolute inset-x-0 top-0 z-30">
+    <header className="bg-ink relative z-30 md:absolute md:inset-x-0 md:top-0 md:bg-transparent">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
         <a href="#top" className="font-display text-2xl text-ink-foreground">
           Arenal Golf <span className="text-ink-muted">·</span>{" "}
