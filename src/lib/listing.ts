@@ -121,4 +121,5 @@ export const GALLERY: PhotoSlot[] = [
   { id: "g10", label: "Pitch & Putt course", size: "1600 × 1200 px" },
   { id: "g11", label: "Clubhouse & gym", size: "1600 × 1200 px" },
   { id: "g12", label: "Gardens & views", size: "1600 × 1200 px" },
+  { id: "g13", label: "Building & entrance", size: "1600 × 1200 px" },
 ];

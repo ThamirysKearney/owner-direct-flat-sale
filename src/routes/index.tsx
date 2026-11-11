@@ -328,7 +328,7 @@ function Gallery() {
             <PhotoFrame
               key={slot.id}
               slot={slot}
-              className={i === 0 ? "col-span-2 row-span-2 aspect-[4/3]" : "aspect-[4/3]"}
+              className={i === 0 ? "col-span-2 row-span-2 h-full" : "aspect-[4/3]"}
               onOpen={() => setOpenIndex(photos.indexOf(slot))}
             />
           ))}
