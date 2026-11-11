@@ -7,7 +7,6 @@ import enSuiteWashbasin from "@/assets/en-suite-washbasin.jpg.asset.json";
 import gardenViews from "@/assets/garden-views.jpg.asset.json";
 import gym from "@/assets/gym.jpg.asset.json";
 import kitchen from "@/assets/kitchen.jpg.asset.json";
-import livingDining from "@/assets/living-dining.jpg.asset.json";
 import livingRoom from "@/assets/living-room.jpg.asset.json";
 import masterBedroom from "@/assets/master-bedroom.jpg.asset.json";
 import pitchPutt from "@/assets/pitch-putt.jpg.asset.json";

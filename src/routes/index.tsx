@@ -234,7 +234,7 @@ function Apartment() {
     <section id="apartment" className="bg-secondary py-24">
       <div className="mx-auto grid max-w-7xl items-start gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
         <div className="lg:sticky lg:top-24">
-          <PhotoFrame slot={FEATURE_PHOTOS.apartment} className="aspect-[4/3] shadow-soft" />
+          <PhotoFrame slot={FEATURE_PHOTOS.apartment} className="aspect-[4/5] shadow-soft" />
         </div>
         <div>
           <SectionHeading
