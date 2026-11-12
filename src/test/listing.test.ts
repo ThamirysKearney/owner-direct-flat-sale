@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { FEATURE_PHOTOS, GALLERY, LISTING, formatPrice } from "@/lib/listing";
+import { FEATURE_PHOTOS, FLOOR_PLAN, GALLERY, LISTING, formatPrice } from "@/lib/listing";
 
 describe("listing", () => {
   it("shows the asking price of €395,000", () => {
@@ -21,9 +21,20 @@ describe("photos", () => {
     }
   });
 
-  it("shows the fifteen photos the owner supplied", () => {
-    const filled = GALLERY.filter((slot) => slot.src).length;
-    expect(filled + 2).toBe(15);
+  it("shows every photo the owner supplied, with no empty slots left", () => {
+    expect(GALLERY.length).toBe(16);
+    expect(GALLERY.every((slot) => slot.src)).toBe(true);
+  });
+
+  it("adds the dining area, the building exterior and the playground", () => {
+    const srcs = GALLERY.map((slot) => slot.src);
+    expect(srcs.some((src) => src?.includes("dining-area"))).toBe(true);
+    expect(srcs.some((src) => src?.includes("front-of-building"))).toBe(true);
+    expect(srcs.some((src) => src?.includes("playground"))).toBe(true);
+  });
+
+  it("shows the floor plan", () => {
+    expect(FLOOR_PLAN.src).toMatch(/^\/__l5e\/assets-v1\//);
   });
 
   it("uses the larger dining-room photo as the apartment feature", () => {
@@ -40,6 +51,7 @@ describe("photos", () => {
     const srcs = [
       FEATURE_PHOTOS.apartment.src,
       FEATURE_PHOTOS.resort.src,
+      FLOOR_PLAN.src,
       ...GALLERY.map((slot) => slot.src),
     ].filter(Boolean);
     expect(new Set(srcs).size).toBe(srcs.length);
