@@ -73,7 +73,7 @@ describe("photos", () => {
   });
 
   it("adds the private terrace photo right after the terrace view", () => {
-    expect(GALLERY[1].src).toContain("private-terrace");
+    expect(GALLERY[1]?.src).toContain("private-terrace");
   });
 
   it("uses the new portrait living room photo as the apartment feature", () => {
