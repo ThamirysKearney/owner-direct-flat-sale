@@ -108,6 +108,7 @@ function Index() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }
@@ -485,6 +486,19 @@ function Contact() {
         Private sale · No agency fees · Legal process managed by the owner's lawyer
       </p>
     </section>
+  );
+}
+
+function BackToTop() {
+  return (
+    <a
+      href="#top"
+      aria-label="Back to top"
+      className="fixed bottom-6 left-6 z-40 inline-flex items-center gap-2 rounded-full border border-border bg-card/90 px-4 py-2.5 text-sm tracking-wide text-foreground shadow-soft backdrop-blur-sm transition-colors hover:border-primary/50 hover:text-primary"
+    >
+      <ArrowUp className="h-4 w-4" aria-hidden />
+      <span className="hidden sm:inline">Back to top</span>
+    </a>
   );
 }
 
