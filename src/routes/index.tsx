@@ -494,7 +494,7 @@ function BackToTop() {
     <a
       href="#top"
       aria-label="Back to top"
-      className="fixed bottom-6 left-6 z-40 inline-flex items-center gap-2 rounded-full border border-border bg-card/90 px-4 py-2.5 text-sm tracking-wide text-foreground shadow-soft backdrop-blur-sm transition-colors hover:border-primary/50 hover:text-primary"
+      className="fixed bottom-4 left-4 z-40 inline-flex h-9 w-9 items-center justify-center gap-2 rounded-full border border-border bg-card/90 p-0 text-sm tracking-wide text-foreground shadow-soft backdrop-blur-sm transition-colors hover:border-primary/50 hover:text-primary sm:bottom-6 sm:left-6 sm:h-auto sm:w-auto sm:px-4 sm:py-2.5"
     >
       <ArrowUp className="h-4 w-4" aria-hidden />
       <span className="hidden sm:inline">Back to top</span>
