@@ -142,9 +142,9 @@ export const FEATURE_PHOTOS: Record<"apartment" | "resort", PhotoSlot> = {
 
 export const GALLERY: PhotoSlot[] = [
   { id: "g1", label: "Terrace with golf views", size: "1600 × 1200 px", src: terraceView.url },
-  { id: "g17", label: "Private terrace", size: "1600 × 1200 px", src: privateTerrace.url },
   { id: "g2", label: "Living room", size: "1600 × 1200 px", src: livingRoom.url },
   { id: "g3", label: "Dining area", size: "1600 × 1200 px", src: diningArea.url },
+  { id: "g17", label: "Private terrace", size: "1600 × 1200 px", src: privateTerrace.url },
   { id: "g4", label: "Kitchen", size: "1600 × 1200 px", src: kitchen.url },
   { id: "g14", label: "Entrance hall & corridor", size: "1600 × 1200 px", src: entranceHall.url },
   { id: "g5", label: "Master bedroom", size: "1600 × 1200 px", src: masterBedroom.url },

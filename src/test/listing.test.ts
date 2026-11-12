@@ -72,8 +72,15 @@ describe("photos", () => {
     expect(FLOOR_PLAN.src).toMatch(/^\/__l5e\/assets-v1\//);
   });
 
-  it("adds the private terrace photo right after the terrace view", () => {
-    expect(GALLERY[1]?.src).toContain("private-terrace");
+  it("puts the private terrace third, after the dining area and before the kitchen", () => {
+    expect(GALLERY.slice(0, 5).map((slot) => slot.label)).toEqual([
+      "Terrace with golf views",
+      "Living room",
+      "Dining area",
+      "Private terrace",
+      "Kitchen",
+    ]);
+    expect(GALLERY[3]?.src).toContain("private-terrace");
   });
 
   it("uses the new portrait living room photo as the apartment feature", () => {
