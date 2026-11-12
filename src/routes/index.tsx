@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
+  ArrowUp,
   Baby,
   Car,
   Check,

@@ -42,7 +42,7 @@ export const FACTS = [
   { value: "2", label: "Bathrooms" },
   { value: "80 m²", label: "Total surface" },
   { value: "Ground", label: "Floor, exterior" },
-  { value: "Parking", label: "+ storage room" },
+  { value: "Secure Parking", label: "+ storage room" },
 ];
 
 export const APARTMENT_FEATURES = [
@@ -56,7 +56,7 @@ export const APARTMENT_FEATURES = [
   "Open views over the golf course, paddle and tennis facilities, and surrounding mountains.",
   "Central air conditioning and heating.",
   "Exterior-facing ground-floor apartment.",
-  "Private underground parking space and storage room.",
+  "Secure private underground parking space and storage room.",
 ];
 
 export const AMENITIES = [
@@ -95,7 +95,7 @@ export const LOCATION = [
   {
     icon: "car",
     title: "Transport & leisure",
-    text: "Easy access to the surrounding towns, beaches, restaurants and attractions of the Costa del Sol.",
+    text: "Bus services connect the area to Benalmádena, Málaga and the coast, with easy access to the surrounding towns, beaches, restaurants and attractions of the Costa del Sol.",
   },
 ] as const;
 
