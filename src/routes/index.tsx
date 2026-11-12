@@ -32,6 +32,7 @@ import {
   DIRECT_SALE,
   FACTS,
   FEATURE_PHOTOS,
+  FLOOR_PLAN,
   GALLERY,
   LISTING,
   LOCATION,
@@ -97,6 +98,7 @@ function Index() {
         <Resort />
         <Location />
         <Gallery />
+        <FloorPlan />
         <Contact />
       </main>
       <Footer />
@@ -369,6 +371,49 @@ function Gallery() {
               )}
             </div>
           )}
+        </DialogContent>
+      </Dialog>
+    </section>
+  );
+}
+
+function FloorPlan() {
+  const [open, setOpen] = useState(false);
+  const alt = "Floor plan of the apartment showing every room and its dimensions";
+
+  return (
+    <section id="floor-plan" className="mx-auto max-w-7xl px-6 py-24">
+      <SectionHeading
+        eyebrow="Floor plan"
+        title="How the apartment is laid out"
+        intro="Two bedrooms, two bathrooms, a dining area and an open living room, opening onto a covered terrace. The plan shows every room with its dimensions — click it to see it larger."
+      />
+      <div className="mt-12 rounded-md border border-border bg-card p-4 md:p-10">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="mx-auto block w-full max-w-3xl cursor-zoom-in"
+          aria-label="Open the floor plan"
+        >
+          <img
+            src={FLOOR_PLAN.src}
+            alt={alt}
+            width={839}
+            height={454}
+            className="mx-auto block h-auto w-full"
+          />
+        </button>
+        <p className="mt-6 text-center text-sm leading-relaxed text-muted-foreground">
+          Salón · living room &nbsp;·&nbsp; Comedor · dining room &nbsp;·&nbsp; Dormitorio · bedroom
+          &nbsp;·&nbsp; Baño · bathroom &nbsp;·&nbsp; Pasillo · hallway &nbsp;·&nbsp; Exterior ·
+          terrace
+        </p>
+      </div>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-4xl border-none bg-card p-4">
+          <DialogTitle className="sr-only">Floor plan</DialogTitle>
+          <img src={FLOOR_PLAN.src} alt={alt} className="w-full rounded-sm" />
         </DialogContent>
       </Dialog>
     </section>
