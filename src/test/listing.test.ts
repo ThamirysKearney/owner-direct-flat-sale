@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
+  APARTMENT_FEATURES,
   FACTS,
   FEATURE_PHOTOS,
   FLOOR_PLAN,
   GALLERY,
   LISTING,
+  LOCATION,
   formatPrice,
   instagramLink,
   phoneLink,
@@ -19,6 +21,22 @@ describe("listing", () => {
   it("shows a single 80 m² total surface instead of separate interior and terrace sizes", () => {
     expect(FACTS.find((f) => f.value === "80 m²")).toBeTruthy();
     expect(FACTS.some((f) => f.value === "64 m²" || f.value === "12 m²")).toBe(false);
+  });
+
+  it("advertises the parking as secure in the facts bar", () => {
+    expect(FACTS.find((f) => f.value === "Secure Parking")).toBeTruthy();
+    expect(FACTS.some((f) => f.value === "Parking")).toBe(false);
+  });
+
+  it("calls the underground parking secure in the apartment bullet points", () => {
+    expect(APARTMENT_FEATURES.some((f) => /^Secure private underground parking/i.test(f))).toBe(
+      true,
+    );
+  });
+
+  it("mentions bus services in the Transport & leisure box", () => {
+    const transport = LOCATION.find((item) => item.title === "Transport & leisure");
+    expect(transport?.text.toLowerCase()).toContain("bus services");
   });
 });
 
