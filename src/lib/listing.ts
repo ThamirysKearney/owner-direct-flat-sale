@@ -1,7 +1,6 @@
 // All listing content lives here so the page stays in sync with the owner's description.
 
 import diningArea from "@/assets/dining-area.jpg.asset.json";
-import diningRoom from "@/assets/dining-room.jpg.asset.json";
 import entranceHall from "@/assets/entrance-hall.jpg.asset.json";
 import enSuiteBathroom from "@/assets/en-suite-bathroom.jpg.asset.json";
 import enSuiteWashbasin from "@/assets/en-suite-washbasin.jpg.asset.json";
@@ -11,11 +10,13 @@ import gardenViews from "@/assets/garden-views.jpg.asset.json";
 import gym from "@/assets/gym.jpg.asset.json";
 import kitchen from "@/assets/kitchen.jpg.asset.json";
 import livingRoom from "@/assets/living-room.jpg.asset.json";
+import livingRoomPortrait from "@/assets/living-room-portrait.jpg.asset.json";
 import masterBedroom from "@/assets/master-bedroom.jpg.asset.json";
 import pitchPutt from "@/assets/pitch-putt.jpg.asset.json";
 import playground from "@/assets/playground.jpg.asset.json";
 import poolMountain from "@/assets/pool-mountain.jpg.asset.json";
 import poolsGardens from "@/assets/pools-gardens.jpg.asset.json";
+import privateTerrace from "@/assets/private-terrace.jpg.asset.json";
 import secondBathroom from "@/assets/second-bathroom.jpg.asset.json";
 import secondBedroom from "@/assets/second-bedroom.jpg.asset.json";
 import terraceView from "@/assets/terrace-view.jpg.asset.json";
@@ -24,10 +25,11 @@ export const LISTING = {
   title: "Exclusive two-bedroom apartment in Arenal Golf",
   location: "Arroyo de la Miel, Benalmádena · Costa del Sol",
   price: 395000,
-  // Replace with the owner's real contact details.
   contact: {
-    email: "owner@example.com",
-    whatsapp: "", // international format, digits only, e.g. "34600000000"
+    email: "arenalgolfpiso@gmail.com",
+    phone: "+34 694 497 708",
+    whatsapp: "34694497708", // international format, digits only
+    instagram: "costadelsolflat",
   },
 };
 
@@ -38,8 +40,7 @@ export function formatPrice(value: number) {
 export const FACTS = [
   { value: "2", label: "Bedrooms" },
   { value: "2", label: "Bathrooms" },
-  { value: "64 m²", label: "Interior" },
-  { value: "12 m²", label: "Private terrace" },
+  { value: "80 m²", label: "Total surface" },
   { value: "Ground", label: "Floor, exterior" },
   { value: "Parking", label: "+ storage room" },
 ];
@@ -129,7 +130,7 @@ export const FEATURE_PHOTOS: Record<"apartment" | "resort", PhotoSlot> = {
     id: "feature-apartment",
     label: "Dining & living room",
     size: "1200 × 1500 px",
-    src: diningRoom.url,
+    src: livingRoomPortrait.url,
   },
   resort: {
     id: "feature-resort",
@@ -141,6 +142,7 @@ export const FEATURE_PHOTOS: Record<"apartment" | "resort", PhotoSlot> = {
 
 export const GALLERY: PhotoSlot[] = [
   { id: "g1", label: "Terrace with golf views", size: "1600 × 1200 px", src: terraceView.url },
+  { id: "g17", label: "Private terrace", size: "1600 × 1200 px", src: privateTerrace.url },
   { id: "g2", label: "Living room", size: "1600 × 1200 px", src: livingRoom.url },
   { id: "g3", label: "Dining area", size: "1600 × 1200 px", src: diningArea.url },
   { id: "g4", label: "Kitchen", size: "1600 × 1200 px", src: kitchen.url },
@@ -180,3 +182,15 @@ export const FLOOR_PLAN: PhotoSlot = {
   size: "839 × 454 px",
   src: floorPlan.url,
 };
+
+export function whatsappLink(digits: string) {
+  return `https://wa.me/${digits}`;
+}
+
+export function phoneLink(phone: string) {
+  return `tel:${phone.replace(/[^\d+]/g, "")}`;
+}
+
+export function instagramLink(username: string) {
+  return `https://www.instagram.com/${username}/`;
+}

@@ -10,9 +10,11 @@ import {
   Flag,
   GraduationCap,
   HeartPulse,
+  Instagram,
   Mail,
   MessageCircle,
   Mountain,
+  Phone,
   ShieldCheck,
   ShoppingCart,
   Sun,
@@ -37,6 +39,9 @@ import {
   LISTING,
   LOCATION,
   formatPrice,
+  instagramLink,
+  phoneLink,
+  whatsappLink,
 } from "@/lib/listing";
 
 const TITLE = "Two-bedroom apartment for sale in Arenal Golf, Benalmádena — €395,000";
@@ -180,7 +185,7 @@ function Hero() {
 function FactsStrip() {
   return (
     <section aria-label="Key facts" className="border-b border-border bg-card">
-      <dl className="mx-auto grid max-w-7xl grid-cols-2 px-6 sm:grid-cols-3 lg:grid-cols-6">
+      <dl className="mx-auto grid max-w-7xl grid-cols-2 px-6 sm:grid-cols-3 lg:grid-cols-5">
         {FACTS.map((fact) => (
           <div
             key={fact.label}
@@ -242,7 +247,7 @@ function Apartment() {
           <SectionHeading
             eyebrow="The apartment"
             title="Immaculate, as new, and ready to move into"
-            intro="Purchased brand new and only enjoyed occasionally as a private second home — never a permanent residence and never rented out. 64 m² of interior living space plus a generous 12 m² terrace, on the ground floor of the prestigious Arenal Golf Residential Complex."
+            intro="Purchased brand new and only enjoyed occasionally as a private second home — never a permanent residence and never rented out. A bright, comfortable home with a generous private terrace, on the ground floor of the prestigious Arenal Golf Residential Complex."
           />
           <ul className="mt-10 divide-y divide-border border-y border-border">
             {APARTMENT_FEATURES.map((feature) => (
@@ -421,7 +426,7 @@ function FloorPlan() {
 }
 
 function Contact() {
-  const { email, whatsapp } = LISTING.contact;
+  const { email, phone, whatsapp, instagram } = LISTING.contact;
   const subject = encodeURIComponent("Arenal Golf apartment — viewing request");
   return (
     <section id="contact" className="mx-auto max-w-4xl px-6 py-28 text-center">
@@ -441,14 +446,40 @@ function Contact() {
             <Mail /> Email the owner
           </a>
         </Button>
-        {whatsapp && (
-          <Button asChild variant="outline" size="xl">
-            <a href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer">
-              <MessageCircle /> WhatsApp
-            </a>
-          </Button>
-        )}
+        <Button asChild variant="outline" size="xl">
+          <a href={whatsappLink(whatsapp)} target="_blank" rel="noreferrer">
+            <MessageCircle /> WhatsApp
+          </a>
+        </Button>
       </div>
+      <ul className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-base">
+        <li>
+          <a
+            href={`mailto:${email}?subject=${subject}`}
+            className="inline-flex items-center gap-2 text-foreground underline-offset-4 hover:text-primary hover:underline"
+          >
+            <Mail className="h-4 w-4 text-primary" aria-hidden /> {email}
+          </a>
+        </li>
+        <li>
+          <a
+            href={phoneLink(phone)}
+            className="inline-flex items-center gap-2 text-foreground underline-offset-4 hover:text-primary hover:underline"
+          >
+            <Phone className="h-4 w-4 text-primary" aria-hidden /> {phone}
+          </a>
+        </li>
+        <li>
+          <a
+            href={instagramLink(instagram)}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-foreground underline-offset-4 hover:text-primary hover:underline"
+          >
+            <Instagram className="h-4 w-4 text-primary" aria-hidden /> @{instagram}
+          </a>
+        </li>
+      </ul>
       <p className="mt-6 text-sm text-muted-foreground">
         Private sale · No agency fees · Legal process managed by the owner's lawyer
       </p>
