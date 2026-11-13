@@ -75,8 +75,20 @@ describe("photos", () => {
   });
 
   it("shows every photo the owner supplied, with no empty slots left", () => {
-    expect(GALLERY.length).toBe(17);
+    expect(GALLERY.length).toBe(21);
     expect(GALLERY.every((slot) => slot.src)).toBe(true);
+  });
+
+  it("adds the garage, the pool deck, the grounds and the golf pond", () => {
+    const srcs = GALLERY.map((slot) => slot.src);
+    expect(srcs.some((src) => src?.includes("underground-parking"))).toBe(true);
+    expect(srcs.some((src) => src?.includes("pool-deck"))).toBe(true);
+    expect(srcs.some((src) => src?.includes("communal-grounds"))).toBe(true);
+    expect(srcs.some((src) => src?.includes("golf-pond"))).toBe(true);
+  });
+
+  it("keeps the children's play area as the last photo in the grid", () => {
+    expect(GALLERY[GALLERY.length - 1]?.label).toBe("Children's play area");
   });
 
   it("adds the dining area, the building exterior and the playground", () => {
