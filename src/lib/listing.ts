@@ -1,11 +1,13 @@
 // All listing content lives here so the page stays in sync with the owner's description.
 
+import communalGrounds from "@/assets/communal-grounds.jpg.asset.json";
 import diningArea from "@/assets/dining-area.jpg.asset.json";
 import entranceHall from "@/assets/entrance-hall.jpg.asset.json";
 import enSuiteBathroom from "@/assets/en-suite-bathroom.jpg.asset.json";
 import enSuiteWashbasin from "@/assets/en-suite-washbasin.jpg.asset.json";
 import floorPlan from "@/assets/floor-plan.jpg.asset.json";
 import frontOfBuilding from "@/assets/front-of-building.jpg.asset.json";
+import golfPond from "@/assets/golf-pond.jpg.asset.json";
 import gardenViews from "@/assets/garden-views.jpg.asset.json";
 import gym from "@/assets/gym.jpg.asset.json";
 import kitchen from "@/assets/kitchen.jpg.asset.json";
@@ -14,12 +16,14 @@ import livingRoomPortrait from "@/assets/living-room-portrait.jpg.asset.json";
 import masterBedroom from "@/assets/master-bedroom.jpg.asset.json";
 import pitchPutt from "@/assets/pitch-putt.jpg.asset.json";
 import playground from "@/assets/playground.jpg.asset.json";
+import poolDeck from "@/assets/pool-deck.jpg.asset.json";
 import poolMountain from "@/assets/pool-mountain.jpg.asset.json";
 import poolsGardens from "@/assets/pools-gardens.jpg.asset.json";
 import privateTerrace from "@/assets/private-terrace.jpg.asset.json";
 import secondBathroom from "@/assets/second-bathroom.jpg.asset.json";
 import secondBedroom from "@/assets/second-bedroom.jpg.asset.json";
 import terraceView from "@/assets/terrace-view.jpg.asset.json";
+import undergroundParking from "@/assets/underground-parking.jpg.asset.json";
 
 export const LISTING = {
   title: "Exclusive two-bedroom apartment in Arenal Golf",
@@ -172,6 +176,10 @@ export const GALLERY: PhotoSlot[] = [
   { id: "g11", label: "Clubhouse & gym", size: "1600 × 1200 px", src: gym.url },
   { id: "g12", label: "Gardens & views", size: "1600 × 1200 px", src: gardenViews.url },
   { id: "g13", label: "Building & entrance", size: "1600 × 1200 px", src: frontOfBuilding.url },
+  { id: "g18", label: "Underground parking", size: "1600 × 1200 px", src: undergroundParking.url },
+  { id: "g19", label: "Pool deck & sunbathing area", size: "1600 × 1200 px", src: poolDeck.url },
+  { id: "g20", label: "Communal grounds & walkways", size: "1600 × 1200 px", src: communalGrounds.url },
+  { id: "g21", label: "Golf course & pond", size: "1600 × 1200 px", src: golfPond.url },
   { id: "g16", label: "Children's play area", size: "1600 × 1200 px", src: playground.url },
 ];
 
