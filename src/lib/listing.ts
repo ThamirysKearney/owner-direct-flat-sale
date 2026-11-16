@@ -14,6 +14,7 @@ import kitchen from "@/assets/kitchen.jpg.asset.json";
 import livingRoom from "@/assets/living-room.jpg.asset.json";
 import livingRoomPortrait from "@/assets/living-room-portrait.jpg.asset.json";
 import masterBedroom from "@/assets/master-bedroom.jpg.asset.json";
+import ownerFamily from "@/assets/owner-family.jpg.asset.json";
 import pitchPutt from "@/assets/pitch-putt.jpg.asset.json";
 import playground from "@/assets/playground.jpg.asset.json";
 import poolDeck from "@/assets/pool-deck.jpg.asset.json";
@@ -103,6 +104,34 @@ export const LOCATION = [
   },
 ] as const;
 
+/** Driving times from the front door of the complex. */
+export const GOLF_TRAVEL = [
+  {
+    icon: "plane",
+    title: "Málaga Airport",
+    time: "15 mins",
+    text: "Landing to first tee in under an hour.",
+  },
+  {
+    icon: "flag",
+    title: "Golf Torrequebrada",
+    time: "6 mins",
+    text: "Championship 18-hole course on your doorstep.",
+  },
+  {
+    icon: "trophy",
+    title: "Mijas, Santana & Calanova Golf",
+    time: "15–20 mins",
+    text: "Easy access to the Costa del Sol's top fairways.",
+  },
+  {
+    icon: "ship",
+    title: "Puerto Banús & Marbella",
+    time: "30–35 mins via AP-7",
+    text: "The Marbella golf lifestyle at nearly half the price.",
+  },
+] as const;
+
 export const DIRECT_SALE = [
   {
     title: "No agency fees",
@@ -119,6 +148,25 @@ export const DIRECT_SALE = [
   {
     title: "Barely lived in",
     text: "Bought brand new and used only occasionally as a second home. Never rented out.",
+  },
+];
+
+export const ABOUT_OWNERS = [
+  {
+    title: "Bought Brand New",
+    text: "Purchased directly from the developer as a brand-new property, and owned by the same family ever since.",
+  },
+  {
+    title: "Strictly Personal Use",
+    text: "Used only as a private family holiday home. Never rented out, never lived in by tenants.",
+  },
+  {
+    title: "Direct & Transparent",
+    text: "You deal with the owner, not an agency. No commission is added to the asking price.",
+  },
+  {
+    title: "Full Legal Peace of Mind",
+    text: "An independent lawyer holds the owner's power of attorney, handles all the paperwork, and the property carries no debts.",
   },
 ];
 
@@ -189,6 +237,14 @@ export const FLOOR_PLAN: PhotoSlot = {
   label: "Floor plan",
   size: "839 × 454 px",
   src: floorPlan.url,
+};
+
+/** Family photo shown in the "About the owners" section. */
+export const OWNER_PHOTO: PhotoSlot = {
+  id: "owner-family",
+  label: "The owners",
+  size: "401 × 401 px",
+  src: ownerFamily.url,
 };
 
 export function whatsappLink(digits: string) {
