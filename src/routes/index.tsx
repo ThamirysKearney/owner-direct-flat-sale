@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   ArrowUp,
+  ArrowUpRight,
   Baby,
   Car,
   Check,
@@ -34,7 +35,7 @@ import { PhotoFrame } from "@/components/listing/PhotoFrame";
 import {
   ABOUT_OWNERS,
   AMENITIES,
-  APARTMENT_FEATURES,
+  APARTMENT_FEATURE_GROUPS,
   DIRECT_SALE,
   FACTS,
   FEATURE_PHOTOS,
@@ -96,6 +97,7 @@ const GOLF_TRAVEL_ICONS = {
 };
 
 const NAV = [
+  { href: "#about", label: "The owners" },
   { href: "#apartment", label: "The apartment" },
   { href: "#resort", label: "Resort" },
   { href: "#location", label: "Location" },
@@ -217,36 +219,58 @@ function FactsStrip() {
   );
 }
 
-function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
+function SectionHeading({
+  eyebrow,
+  title,
+  intro,
+  tone = "light",
+}: {
+  eyebrow: string;
+  title: string;
+  intro?: string;
+  tone?: "light" | "dark";
+}) {
   return (
     <div className="max-w-2xl">
-      <p className="eyebrow text-primary">{eyebrow}</p>
-      <h2 className="mt-4 text-4xl leading-tight md:text-5xl">{title}</h2>
-      {intro && <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{intro}</p>}
+      <p className="eyebrow flex items-center gap-3 text-primary">
+        <span className="h-px w-8 bg-primary" aria-hidden />
+        {eyebrow}
+      </p>
+      <h2 className="mt-5 text-4xl leading-[1.1] md:text-5xl">{title}</h2>
+      {intro && (
+        <p
+          className={
+            tone === "dark"
+              ? "mt-5 text-lg leading-relaxed text-ink-muted"
+              : "mt-5 text-lg leading-relaxed text-muted-foreground"
+          }
+        >
+          {intro}
+        </p>
+      )}
     </div>
   );
 }
 
 function DirectSale() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
-        <SectionHeading
-          eyebrow="A direct, transparent sale"
-          title="Sold by the owner. Handled by a lawyer."
-          intro="No agency in the middle, no inflated commission. Just a clean, well-kept property and a straightforward process."
-        />
-        <div className="grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2">
-          {DIRECT_SALE.map((item) => (
-            <div key={item.title} className="bg-card p-8">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                <Check className="h-4 w-4" aria-hidden />
-              </span>
-              <h3 className="mt-5 text-2xl">{item.title}</h3>
-              <p className="mt-2 leading-relaxed text-muted-foreground">{item.text}</p>
-            </div>
-          ))}
+    <section aria-labelledby="direct-sale-title" className="bg-accent text-accent-foreground">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-[1fr_2fr] lg:items-center lg:gap-16">
+        <div>
+          <p className="eyebrow text-accent-foreground/70">A direct, transparent sale</p>
+          <h2 id="direct-sale-title" className="mt-4 text-3xl leading-tight md:text-4xl">
+            Sold by the owner. <span className="italic">Handled by a lawyer.</span>
+          </h2>
         </div>
+        <ul className="grid gap-8 sm:grid-cols-3 sm:gap-6">
+          {DIRECT_SALE.map((item) => (
+            <li key={item.title} className="border-t border-accent-foreground/25 pt-5">
+              <Check className="h-5 w-5 text-accent-foreground/80" aria-hidden />
+              <h3 className="mt-3 text-2xl">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-accent-foreground/80">{item.text}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -256,30 +280,41 @@ function AboutOwners() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section id="about" className="border-y border-border bg-card py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <SectionHeading
-          eyebrow="About the owners"
-          title="Owned by one family from new. Never rented out."
-          intro="The apartment was bought brand new by our family and has been a private holiday home ever since. That is why it is in the condition you see in the photos — and why we are selling it ourselves."
-        />
-        <div className="mt-14 grid gap-10 lg:grid-cols-[0.8fr_2fr] lg:gap-14">
-          <PhotoFrame
-            slot={OWNER_PHOTO}
-            className="mx-auto aspect-square w-full max-w-sm shadow-soft"
-            onOpen={() => setOpen(true)}
-          />
-          <div className="grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2">
-            {ABOUT_OWNERS.map((item) => (
-              <div key={item.title} className="bg-secondary p-8">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                  <Check className="h-4 w-4" aria-hidden />
-                </span>
-                <h3 className="mt-5 text-2xl">{item.title}</h3>
-                <p className="mt-2 leading-relaxed text-muted-foreground">{item.text}</p>
-              </div>
-            ))}
+    <section id="about" className="py-24 md:py-32">
+      <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <figure className="mx-auto w-full max-w-sm">
+          <div className="relative">
+            <div
+              className="absolute inset-0 translate-x-4 translate-y-4 rounded-md border border-primary/35"
+              aria-hidden
+            />
+            <PhotoFrame
+              slot={OWNER_PHOTO}
+              className="relative aspect-square shadow-soft"
+              onOpen={() => setOpen(true)}
+            />
           </div>
+          <figcaption className="eyebrow mt-8 text-center text-muted-foreground">
+            The family
+          </figcaption>
+        </figure>
+        <div>
+          <SectionHeading
+            eyebrow="About the owners"
+            title="Owned by one family from new. Never rented out."
+            intro="Cared for by one family — which is why it looks the way it does in the photos, and why we are selling it ourselves."
+          />
+          <ol className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2">
+            {ABOUT_OWNERS.map((item, i) => (
+              <li key={item.title} className="border-t border-border pt-5">
+                <span className="font-display text-lg italic text-primary">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-1 text-2xl">{item.title}</h3>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{item.text}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
 
@@ -296,7 +331,7 @@ function AboutOwners() {
 
 function Apartment() {
   return (
-    <section id="apartment" className="bg-secondary py-24">
+    <section id="apartment" className="bg-secondary py-24 md:py-32">
       <div className="mx-auto grid max-w-7xl items-start gap-14 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
         <div className="lg:sticky lg:top-24">
           <PhotoFrame slot={FEATURE_PHOTOS.apartment} className="aspect-[4/5] shadow-soft" />
@@ -305,16 +340,26 @@ function Apartment() {
           <SectionHeading
             eyebrow="The apartment"
             title="Immaculate, as new, and ready to move into"
-            intro="Purchased brand new and only enjoyed occasionally as a private second home — never a permanent residence and never rented out. A bright, comfortable home with a generous private terrace, on the ground floor of the prestigious Arenal Golf Residential Complex."
+            intro="A bright, comfortable home with a generous private terrace, in the prestigious Arenal Golf Residential Complex."
           />
-          <ul className="mt-10 divide-y divide-border border-y border-border">
-            {APARTMENT_FEATURES.map((feature) => (
-              <li key={feature} className="flex gap-4 py-4">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
-                <span className="leading-relaxed">{feature}</span>
-              </li>
+          <div className="mt-12 space-y-10">
+            {APARTMENT_FEATURE_GROUPS.map((group) => (
+              <div key={group.title}>
+                <h3 className="eyebrow text-primary">{group.title}</h3>
+                <ul className="mt-3 divide-y divide-border border-t border-border">
+                  {group.items.map((feature) => (
+                    <li key={feature} className="flex gap-4 py-4">
+                      <span
+                        className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
+                        aria-hidden
+                      />
+                      <span className="leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -323,18 +368,15 @@ function Apartment() {
 
 function Resort() {
   return (
-    <section id="resort" className="bg-ink py-24 text-ink-foreground">
+    <section id="resort" className="bg-ink py-24 text-ink-foreground md:py-32">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[1.2fr_1fr] lg:gap-20">
         <div>
-          <p className="eyebrow text-primary">An exceptional resort lifestyle</p>
-          <h2 className="mt-4 max-w-xl text-4xl leading-tight md:text-5xl">
-            Golf, pools and gardens on your doorstep
-          </h2>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted">
-            Whether you enjoy an active lifestyle, relaxing by the pool, playing golf or simply the
-            tranquillity of beautifully maintained surroundings, Arenal Golf is the best of the
-            Costa del Sol.
-          </p>
+          <SectionHeading
+            tone="dark"
+            eyebrow="An exceptional resort lifestyle"
+            title="Golf, pools and gardens on your doorstep"
+            intro="Whether you enjoy an active lifestyle, relaxing by the pool, playing golf or simply the tranquillity of beautifully maintained surroundings, Arenal Golf is the best of the Costa del Sol."
+          />
           <ul className="mt-12 grid gap-x-8 gap-y-6 sm:grid-cols-2">
             {AMENITIES.map((amenity) => {
               const Icon = AMENITY_ICONS[amenity.icon];
@@ -357,23 +399,31 @@ function Resort() {
 
 function Location() {
   return (
-    <section id="location" className="mx-auto max-w-7xl px-6 py-24">
-      <SectionHeading
-        eyebrow="An outstanding location"
-        title="Between the sea and Benalmádena Pueblo"
-        intro="Residential tranquillity with everyday essentials close by — perfectly placed between the vibrant coast and the charming historic village of Benalmádena Pueblo."
-      />
-      <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
-        {LOCATION.map((item) => {
-          const Icon = LOCATION_ICONS[item.icon];
-          return (
-            <div key={item.title} className="rounded-md border border-border bg-card p-6">
-              <Icon className="h-6 w-6 text-accent" aria-hidden />
-              <h3 className="mt-5 text-2xl">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-            </div>
-          );
-        })}
+    <section id="location" className="py-24 md:py-32">
+      <div className="mx-auto grid max-w-7xl items-start gap-14 px-6 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
+        <div className="lg:sticky lg:top-24">
+          <SectionHeading
+            eyebrow="An outstanding location"
+            title="Between the sea and Benalmádena Pueblo"
+            intro="Quiet and residential, with hospitals, shops and schools all within a few minutes."
+          />
+        </div>
+        <ul className="divide-y divide-border border-y border-border">
+          {LOCATION.map((item) => {
+            const Icon = LOCATION_ICONS[item.icon];
+            return (
+              <li key={item.title} className="flex gap-6 py-7">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-secondary">
+                  <Icon className="h-5 w-5 text-accent" aria-hidden />
+                </span>
+                <div>
+                  <h3 className="text-2xl">{item.title}</h3>
+                  <p className="mt-1.5 leading-relaxed text-muted-foreground">{item.text}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );
@@ -381,23 +431,28 @@ function Location() {
 
 function GolfTravel() {
   return (
-    <section id="golf-travel" className="border-y border-border bg-card py-24">
+    <section id="golf-travel" className="bg-secondary py-24">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="Golf & travel distances"
           title="Everything within easy reach"
-          intro="Short drives to the coast's best golf, the airport and Marbella — all measured from the front door of the complex."
+          intro="Driving times from the front door of the complex."
         />
-        <div className="mt-14 grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {GOLF_TRAVEL.map((item) => {
             const Icon = GOLF_TRAVEL_ICONS[item.icon];
             return (
-              <div key={item.title} className="bg-secondary p-8">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                  <Icon className="h-4 w-4" aria-hidden />
-                </span>
-                <h3 className="mt-5 text-2xl">{item.title}</h3>
-                <p className="eyebrow mt-3 text-primary">{item.time}</p>
+              <div key={item.title} className="flex flex-col bg-card p-8">
+                <Icon className="h-5 w-5 text-accent" aria-hidden />
+                <p className="mt-6 font-display text-4xl leading-none text-primary">
+                  {item.time.replace(/ via .*/, "")}
+                </p>
+                {item.time.includes(" via ") && (
+                  <p className="eyebrow mt-2 text-muted-foreground">
+                    {item.time.replace(/.* (via .*)/, "$1")}
+                  </p>
+                )}
+                <h3 className="mt-5 text-2xl leading-snug">{item.title}</h3>
                 <p className="mt-2 leading-relaxed text-muted-foreground">{item.text}</p>
               </div>
             );
@@ -417,9 +472,13 @@ function Gallery() {
     setOpenIndex((i) => (i === null ? i : (i + delta + photos.length) % photos.length));
 
   return (
-    <section id="gallery" className="bg-secondary py-24">
+    <section id="gallery" className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionHeading eyebrow="Photos" title="Take a look around" />
+        <SectionHeading
+          eyebrow="Photos"
+          title="Take a look around"
+          intro="Click any photo to see it larger and browse the rest."
+        />
         <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
           {GALLERY.map((slot, i) => (
             <PhotoFrame
@@ -427,6 +486,7 @@ function Gallery() {
               slot={slot}
               className={i === 0 ? "col-span-2 row-span-2 h-full" : "aspect-[4/3]"}
               onOpen={() => setOpenIndex(photos.indexOf(slot))}
+              caption
             />
           ))}
         </div>
@@ -474,11 +534,12 @@ function FloorPlan() {
   const alt = "Floor plan of the apartment showing every room and its dimensions";
 
   return (
-    <section id="floor-plan" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="floor-plan" className="border-t border-border bg-secondary">
+      <div className="mx-auto max-w-7xl px-6 py-24">
       <SectionHeading
         eyebrow="Floor plan"
         title="How the apartment is laid out"
-        intro="Two bedrooms, two bathrooms, a dining area and an open living room, opening onto a covered terrace. The plan shows every room with its dimensions — click it to see it larger."
+        intro="Every room with its dimensions — click the plan to see it larger."
       />
       <div className="mt-12 rounded-md border border-border bg-card p-4 md:p-10">
         <button
@@ -501,6 +562,7 @@ function FloorPlan() {
           terrace
         </p>
       </div>
+      </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-4xl border-none bg-card p-4">
@@ -515,61 +577,83 @@ function FloorPlan() {
 function Contact() {
   const { email, phone, whatsapp, instagram } = LISTING.contact;
   const subject = encodeURIComponent("Arenal Golf apartment — viewing request");
+  const row =
+    "flex items-center gap-5 rounded-md border border-ink-foreground/15 bg-ink-foreground/5 p-5";
+  const icon =
+    "flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground";
+
   return (
-    <section id="contact" className="mx-auto max-w-4xl px-6 py-28 text-center">
-      <p className="eyebrow text-primary">A rare opportunity</p>
-      <h2 className="mt-5 text-4xl leading-tight md:text-6xl">
-        A home to enjoy, <span className="italic">in a setting to fall in love with.</span>
-      </h2>
-      <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-        An elegant permanent residence, a private holiday retreat or a sound investment on the Costa
-        del Sol. Get in touch directly with the owner to ask questions or arrange a viewing.
-      </p>
-      <p className="mt-10 eyebrow text-muted-foreground">Price</p>
-      <p className="font-display text-6xl text-foreground">{price}</p>
-      <div className="mt-10 flex flex-wrap justify-center gap-3">
-        <Button asChild variant="hero" size="xl">
-          <a href={`mailto:${email}?subject=${subject}`}>
-            <Mail /> Email the owner
-          </a>
-        </Button>
-        <Button asChild variant="outline" size="xl">
-          <a href={whatsappLink(whatsapp)} target="_blank" rel="noreferrer">
-            <MessageCircle /> WhatsApp
-          </a>
-        </Button>
+    <section id="contact" className="bg-ink text-ink-foreground">
+      <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 py-24 md:py-32 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
+        <div>
+          <p className="eyebrow flex items-center gap-3 text-primary">
+            <span className="h-px w-8 bg-primary" aria-hidden />A rare opportunity
+          </p>
+          <h2 className="mt-5 text-4xl leading-[1.1] md:text-6xl">
+            A home to enjoy, <span className="italic">in a setting to fall in love with.</span>
+          </h2>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
+            An elegant permanent residence, a private holiday retreat or a sound investment on the
+            Costa del Sol. Get in touch to ask questions or arrange a viewing.
+          </p>
+          <p className="eyebrow mt-10 text-ink-muted">Asking price</p>
+          <p className="font-display text-6xl">{price}</p>
+        </div>
+
+        <ul className="space-y-4">
+          <li>
+            <a
+              href={`mailto:${email}?subject=${subject}`}
+              className={`${row} group transition-colors hover:border-primary/60`}
+            >
+              <span className={icon}>
+                <Mail className="h-5 w-5" aria-hidden />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="eyebrow block text-ink-muted">Email the owner</span>
+                <span className="mt-1 block truncate text-lg">{email}</span>
+              </span>
+              <ArrowUpRight className="h-5 w-5 shrink-0 text-ink-muted transition-colors group-hover:text-primary" />
+            </a>
+          </li>
+          <li className={`${row} flex-wrap`}>
+            <span className={icon}>
+              <Phone className="h-5 w-5" aria-hidden />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="eyebrow block text-ink-muted">Phone & WhatsApp</span>
+              <a
+                href={phoneLink(phone)}
+                className="mt-1 block text-lg underline-offset-4 hover:text-primary hover:underline"
+              >
+                {phone}
+              </a>
+            </span>
+            <Button asChild variant="hero" size="lg">
+              <a href={whatsappLink(whatsapp)} target="_blank" rel="noreferrer">
+                <MessageCircle /> WhatsApp
+              </a>
+            </Button>
+          </li>
+          <li>
+            <a
+              href={instagramLink(instagram)}
+              target="_blank"
+              rel="noreferrer"
+              className={`${row} group transition-colors hover:border-primary/60`}
+            >
+              <span className={icon}>
+                <Instagram className="h-5 w-5" aria-hidden />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="eyebrow block text-ink-muted">More photos on Instagram</span>
+                <span className="mt-1 block text-lg">@{instagram}</span>
+              </span>
+              <ArrowUpRight className="h-5 w-5 shrink-0 text-ink-muted transition-colors group-hover:text-primary" />
+            </a>
+          </li>
+        </ul>
       </div>
-      <ul className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-base">
-        <li>
-          <a
-            href={`mailto:${email}?subject=${subject}`}
-            className="inline-flex items-center gap-2 text-foreground underline-offset-4 hover:text-primary hover:underline"
-          >
-            <Mail className="h-4 w-4 text-primary" aria-hidden /> {email}
-          </a>
-        </li>
-        <li>
-          <a
-            href={phoneLink(phone)}
-            className="inline-flex items-center gap-2 text-foreground underline-offset-4 hover:text-primary hover:underline"
-          >
-            <Phone className="h-4 w-4 text-primary" aria-hidden /> {phone}
-          </a>
-        </li>
-        <li>
-          <a
-            href={instagramLink(instagram)}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-foreground underline-offset-4 hover:text-primary hover:underline"
-          >
-            <Instagram className="h-4 w-4 text-primary" aria-hidden /> @{instagram}
-          </a>
-        </li>
-      </ul>
-      <p className="mt-6 text-sm text-muted-foreground">
-        Private sale · No agency fees · Legal process managed by the owner's lawyer
-      </p>
     </section>
   );
 }
@@ -589,7 +673,7 @@ function BackToTop() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border">
+    <footer>
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-8 text-sm text-muted-foreground md:flex-row">
         <p className="font-display text-lg text-foreground">Arenal Golf · Apartment</p>
         <p>{LISTING.location}</p>
