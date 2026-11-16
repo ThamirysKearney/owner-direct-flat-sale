@@ -16,7 +16,9 @@ import {
   MessageCircle,
   Mountain,
   Phone,
+  Plane,
   ShieldCheck,
+  Ship,
   ShoppingCart,
   Sun,
   Trees,
@@ -30,6 +32,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { PhotoFrame } from "@/components/listing/PhotoFrame";
 import {
+  ABOUT_OWNERS,
   AMENITIES,
   APARTMENT_FEATURES,
   DIRECT_SALE,
@@ -37,8 +40,10 @@ import {
   FEATURE_PHOTOS,
   FLOOR_PLAN,
   GALLERY,
+  GOLF_TRAVEL,
   LISTING,
   LOCATION,
+  OWNER_PHOTO,
   formatPrice,
   instagramLink,
   phoneLink,
@@ -83,6 +88,13 @@ const LOCATION_ICONS = {
   car: Car,
 };
 
+const GOLF_TRAVEL_ICONS = {
+  plane: Plane,
+  flag: Flag,
+  trophy: Trophy,
+  ship: Ship,
+};
+
 const NAV = [
   { href: "#apartment", label: "The apartment" },
   { href: "#resort", label: "Resort" },
@@ -100,9 +112,11 @@ function Index() {
         <Hero />
         <FactsStrip />
         <DirectSale />
+        <AboutOwners />
         <Apartment />
         <Resort />
         <Location />
+        <GolfTravel />
         <Gallery />
         <FloorPlan />
         <Contact />
