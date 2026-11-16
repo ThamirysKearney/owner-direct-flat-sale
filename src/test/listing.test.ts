@@ -142,3 +142,47 @@ describe("photos", () => {
     expect(FEATURE_PHOTOS.resort.src).toContain("pool-mountain");
   });
 });
+
+describe("golf & travel distances", () => {
+  it("lists four destinations with their driving times", () => {
+    expect(GOLF_TRAVEL.map((item) => item.title)).toEqual([
+      "Málaga Airport",
+      "Golf Torrequebrada",
+      "Mijas, Santana & Calanova Golf",
+      "Puerto Banús & Marbella",
+    ]);
+    expect(GOLF_TRAVEL.map((item) => item.time)).toEqual([
+      "15 mins",
+      "6 mins",
+      "15–20 mins",
+      "30–35 mins via AP-7",
+    ]);
+  });
+
+  it("keeps the owner's wording for the airport and Marbella cards", () => {
+    const airport = GOLF_TRAVEL.find((item) => item.title === "Málaga Airport");
+    expect(airport?.text).toBe("Landing to first tee in under an hour.");
+    const marbella = GOLF_TRAVEL.find((item) => item.title === "Puerto Banús & Marbella");
+    expect(marbella?.text).toBe("The Marbella golf lifestyle at nearly half the price.");
+  });
+});
+
+describe("about the owners", () => {
+  it("shows the four owner cards in order", () => {
+    expect(ABOUT_OWNERS.map((item) => item.title)).toEqual([
+      "Bought Brand New",
+      "Strictly Personal Use",
+      "Direct & Transparent",
+      "Full Legal Peace of Mind",
+    ]);
+  });
+
+  it("says the apartment was never rented out", () => {
+    const personal = ABOUT_OWNERS.find((item) => item.title === "Strictly Personal Use");
+    expect(personal?.text.toLowerCase()).toContain("never rented out");
+  });
+
+  it("shows the family photo", () => {
+    expect(OWNER_PHOTO.src).toMatch(/^\/__l5e\/assets-v1\//);
+  });
+});
