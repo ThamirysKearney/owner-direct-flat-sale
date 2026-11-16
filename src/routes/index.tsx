@@ -252,6 +252,48 @@ function DirectSale() {
   );
 }
 
+function AboutOwners() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <section id="about" className="border-y border-border bg-card py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeading
+          eyebrow="About the owners"
+          title="Owned by one family from new. Never rented out."
+          intro="The apartment was bought brand new by our family and has been a private holiday home ever since. That is why it is in the condition you see in the photos — and why we are selling it ourselves."
+        />
+        <div className="mt-14 grid gap-10 lg:grid-cols-[0.8fr_2fr] lg:gap-14">
+          <PhotoFrame
+            slot={OWNER_PHOTO}
+            className="mx-auto aspect-square w-full max-w-sm shadow-soft"
+            onOpen={() => setOpen(true)}
+          />
+          <div className="grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2">
+            {ABOUT_OWNERS.map((item) => (
+              <div key={item.title} className="bg-secondary p-8">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                  <Check className="h-4 w-4" aria-hidden />
+                </span>
+                <h3 className="mt-5 text-2xl">{item.title}</h3>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-sm border-none bg-ink p-2 text-ink-foreground">
+          <DialogTitle className="sr-only">{OWNER_PHOTO.label}</DialogTitle>
+          <img src={OWNER_PHOTO.src} alt={OWNER_PHOTO.label} className="w-full rounded-sm" />
+          <p className="px-2 py-3 font-display text-xl">{OWNER_PHOTO.label}</p>
+        </DialogContent>
+      </Dialog>
+    </section>
+  );
+}
+
 function Apartment() {
   return (
     <section id="apartment" className="bg-secondary py-24">
@@ -332,6 +374,35 @@ function Location() {
             </div>
           );
         })}
+      </div>
+    </section>
+  );
+}
+
+function GolfTravel() {
+  return (
+    <section id="golf-travel" className="border-y border-border bg-card py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeading
+          eyebrow="Golf & travel distances"
+          title="Everything within easy reach"
+          intro="Short drives to the coast's best golf, the airport and Marbella — all measured from the front door of the complex."
+        />
+        <div className="mt-14 grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          {GOLF_TRAVEL.map((item) => {
+            const Icon = GOLF_TRAVEL_ICONS[item.icon];
+            return (
+              <div key={item.title} className="bg-secondary p-8">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                  <Icon className="h-4 w-4" aria-hidden />
+                </span>
+                <h3 className="mt-5 text-2xl">{item.title}</h3>
+                <p className="eyebrow mt-3 text-primary">{item.time}</p>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{item.text}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
