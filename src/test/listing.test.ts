@@ -1,12 +1,15 @@
 import { describe, expect, it } from "vitest";
 import {
+  ABOUT_OWNERS,
   APARTMENT_FEATURES,
   FACTS,
   FEATURE_PHOTOS,
   FLOOR_PLAN,
   GALLERY,
+  GOLF_TRAVEL,
   LISTING,
   LOCATION,
+  OWNER_PHOTO,
   formatPrice,
   instagramLink,
   phoneLink,
