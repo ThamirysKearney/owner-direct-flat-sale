@@ -50,19 +50,35 @@ export const FACTS = [
   { value: "Secure Parking", label: "+ storage room" },
 ];
 
-export const APARTMENT_FEATURES = [
-  "Two spacious bedrooms, including a master bedroom with en-suite bathroom and bathtub.",
-  "Two full bathrooms, one with a bathtub and the other with a walk-in shower.",
-  "Built-in wardrobes in both bedrooms.",
-  "Fully furnished and ready to move into.",
-  "Fully equipped kitchen: fridge-freezer, washing machine, dishwasher, microwave and other essential appliances.",
-  "Bright living and dining area.",
-  "Spacious 12 m² private terrace, ideal for outdoor dining and relaxing.",
-  "Open views over the golf course, paddle and tennis facilities, and surrounding mountains.",
-  "Central air conditioning and heating.",
-  "Exterior-facing ground-floor apartment.",
-  "Secure private underground parking space and storage room.",
+/** "The apartment" bullet points, grouped so the list is easy to scan. */
+export const APARTMENT_FEATURE_GROUPS = [
+  {
+    title: "Rooms",
+    items: [
+      "Two bedrooms with built-in wardrobes; the master has its own en-suite bathroom with bathtub.",
+      "Second full bathroom with a walk-in shower.",
+      "Bright living and dining area.",
+    ],
+  },
+  {
+    title: "Kitchen & comfort",
+    items: [
+      "Fully equipped kitchen: fridge-freezer, washing machine, dishwasher, microwave and other essential appliances.",
+      "Central air conditioning and heating.",
+      "Sold fully furnished.",
+    ],
+  },
+  {
+    title: "Outside & parking",
+    items: [
+      "Spacious 12 m² private terrace, ideal for outdoor dining and relaxing.",
+      "Open views over the golf course, paddle and tennis facilities, and surrounding mountains.",
+      "Secure private underground parking space and storage room.",
+    ],
+  },
 ];
+
+export const APARTMENT_FEATURES = APARTMENT_FEATURE_GROUPS.flatMap((group) => group.items);
 
 export const AMENITIES = [
   { icon: "waves", label: "Two communal swimming pools" },
@@ -143,30 +159,27 @@ export const DIRECT_SALE = [
   },
   {
     title: "Free of debts",
-    text: "The property carries no debts, charges or pending paperwork.",
-  },
-  {
-    title: "Barely lived in",
-    text: "Bought brand new and used only occasionally as a second home. Never rented out.",
+    text: "No debts, charges or pending paperwork on the property.",
   },
 ];
 
+/** Owner cards. Body text avoids repeating the facts already listed in DIRECT_SALE. */
 export const ABOUT_OWNERS = [
   {
     title: "Bought Brand New",
-    text: "Purchased directly from the developer as a brand-new property, and owned by the same family ever since.",
+    text: "Purchased directly from the developer and owned by the same family ever since.",
   },
   {
     title: "Strictly Personal Use",
-    text: "Used only as a private family holiday home. Never rented out, never lived in by tenants.",
+    text: "Enjoyed only as our family's holiday home. Never rented out, never lived in by tenants.",
   },
   {
     title: "Direct & Transparent",
-    text: "You deal with the owner, not an agency. No commission is added to the asking price.",
+    text: "You speak with us, the family, directly — honest answers from the people who know the apartment best.",
   },
   {
     title: "Full Legal Peace of Mind",
-    text: "An independent lawyer holds the owner's power of attorney, handles all the paperwork, and the property carries no debts.",
+    text: "Everything is in order and in professional hands, so you can buy with complete confidence.",
   },
 ];
 
