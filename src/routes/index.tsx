@@ -536,32 +536,32 @@ function FloorPlan() {
   return (
     <section id="floor-plan" className="border-t border-border bg-secondary">
       <div className="mx-auto max-w-7xl px-6 py-24">
-      <SectionHeading
-        eyebrow="Floor plan"
-        title="How the apartment is laid out"
-        intro="Every room with its dimensions — click the plan to see it larger."
-      />
-      <div className="mt-12 rounded-md border border-border bg-card p-4 md:p-10">
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="mx-auto block w-full max-w-3xl cursor-zoom-in"
-          aria-label="Open the floor plan"
-        >
-          <img
-            src={FLOOR_PLAN.src}
-            alt={alt}
-            width={839}
-            height={454}
-            className="mx-auto block h-auto w-full"
-          />
-        </button>
-        <p className="mt-6 text-center text-sm leading-relaxed text-muted-foreground">
-          Salón · living room &nbsp;·&nbsp; Comedor · dining room &nbsp;·&nbsp; Dormitorio · bedroom
-          &nbsp;·&nbsp; Baño · bathroom &nbsp;·&nbsp; Pasillo · hallway &nbsp;·&nbsp; Exterior ·
-          terrace
-        </p>
-      </div>
+        <SectionHeading
+          eyebrow="Floor plan"
+          title="How the apartment is laid out"
+          intro="Every room with its dimensions — click the plan to see it larger."
+        />
+        <div className="mt-12 rounded-md border border-border bg-card p-4 md:p-10">
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="mx-auto block w-full max-w-3xl cursor-zoom-in"
+            aria-label="Open the floor plan"
+          >
+            <img
+              src={FLOOR_PLAN.src}
+              alt={alt}
+              width={839}
+              height={454}
+              className="mx-auto block h-auto w-full"
+            />
+          </button>
+          <p className="mt-6 text-center text-sm leading-relaxed text-muted-foreground">
+            Salón · living room &nbsp;·&nbsp; Comedor · dining room &nbsp;·&nbsp; Dormitorio ·
+            bedroom &nbsp;·&nbsp; Baño · bathroom &nbsp;·&nbsp; Pasillo · hallway &nbsp;·&nbsp;
+            Exterior · terrace
+          </p>
+        </div>
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>

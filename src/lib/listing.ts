@@ -239,7 +239,12 @@ export const GALLERY: PhotoSlot[] = [
   { id: "g13", label: "Building & entrance", size: "1600 × 1200 px", src: frontOfBuilding.url },
   { id: "g18", label: "Underground parking", size: "1600 × 1200 px", src: undergroundParking.url },
   { id: "g19", label: "Pool deck & sunbathing area", size: "1600 × 1200 px", src: poolDeck.url },
-  { id: "g20", label: "Communal grounds & walkways", size: "1600 × 1200 px", src: communalGrounds.url },
+  {
+    id: "g20",
+    label: "Communal grounds & walkways",
+    size: "1600 × 1200 px",
+    src: communalGrounds.url,
+  },
   { id: "g21", label: "Golf course & pond", size: "1600 × 1200 px", src: golfPond.url },
   { id: "g16", label: "Children's play area", size: "1600 × 1200 px", src: playground.url },
 ];

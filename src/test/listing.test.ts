@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   ABOUT_OWNERS,
+  APARTMENT_FEATURE_GROUPS,
   APARTMENT_FEATURES,
+  DIRECT_SALE,
   FACTS,
   FEATURE_PHOTOS,
   FLOOR_PLAN,
@@ -35,6 +37,26 @@ describe("listing", () => {
     expect(APARTMENT_FEATURES.some((f) => /^Secure private underground parking/i.test(f))).toBe(
       true,
     );
+  });
+
+  it("keeps the secure parking bullet last in The apartment list", () => {
+    expect(APARTMENT_FEATURES[APARTMENT_FEATURES.length - 1]).toBe(
+      "Secure private underground parking space and storage room.",
+    );
+  });
+
+  it("keeps the 12 m² private terrace bullet", () => {
+    expect(APARTMENT_FEATURE_GROUPS.flatMap((g) => g.items)).toContain(
+      "Spacious 12 m² private terrace, ideal for outdoor dining and relaxing.",
+    );
+  });
+
+  it("drops 'Barely lived in' from the direct-sale section, leaving three points", () => {
+    expect(DIRECT_SALE.map((item) => item.title)).toEqual([
+      "No agency fees",
+      "Legal handled by a lawyer",
+      "Free of debts",
+    ]);
   });
 
   it("mentions bus services in the Transport & leisure box", () => {
@@ -137,7 +159,11 @@ describe("photos", () => {
   });
 
   it("drops the low-resolution pool photo in favour of the larger one", () => {
-    const srcs = [FEATURE_PHOTOS.apartment.src, FEATURE_PHOTOS.resort.src, ...GALLERY.map((s) => s.src)];
+    const srcs = [
+      FEATURE_PHOTOS.apartment.src,
+      FEATURE_PHOTOS.resort.src,
+      ...GALLERY.map((s) => s.src),
+    ];
     expect(srcs.some((src) => src?.includes("swimming-pools"))).toBe(false);
     expect(FEATURE_PHOTOS.resort.src).toContain("pool-mountain");
   });
