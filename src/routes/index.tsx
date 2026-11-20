@@ -285,7 +285,7 @@ function AboutOwners() {
         <figure className="mx-auto w-full max-w-sm">
           <div className="relative">
             <div
-              className="absolute inset-0 translate-x-4 translate-y-4 rounded-md border border-primary/35"
+              className="absolute inset-0 hidden translate-x-4 translate-y-4 rounded-md border border-primary/35 sm:block"
               aria-hidden
             />
             <PhotoFrame
@@ -629,7 +629,7 @@ function Contact() {
                 {phone}
               </a>
             </span>
-            <Button asChild variant="hero" size="lg">
+            <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
               <a href={whatsappLink(whatsapp)} target="_blank" rel="noreferrer">
                 <MessageCircle /> WhatsApp
               </a>
@@ -675,7 +675,7 @@ function Footer() {
   return (
     <footer>
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-8 text-sm text-muted-foreground md:flex-row">
-        <p className="font-display text-lg text-foreground">Arenal Golf · Apartment</p>
+        <p className="font-display text-lg text-foreground md:ml-36">Arenal Golf · Apartment</p>
         <p>{LISTING.location}</p>
       </div>
     </footer>
